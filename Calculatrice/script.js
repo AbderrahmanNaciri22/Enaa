@@ -1,7 +1,6 @@
    const prompt = require("prompt-sync")();
    
     var historique = [];
-    let resultat;
     
     function addition(a, b) {
         return a+b;
@@ -48,7 +47,7 @@
 
 while (true) {
 
-    let operation = prompt("Entrez l'opération (+, -, /, **, ^^, //) ou 0 pour quitter :");
+    let operation = prompt("Entrez l'opération (+, -, *, /, **, ^^, //) ou 0 pour quitter :");
 
     if (operation === "0") {
         console.log("Fin du programme");
@@ -64,7 +63,9 @@ while (true) {
         resultat = addition(nombre1, nombre2);
     } else if (operation === "-") {
         resultat = soustraction(nombre1, nombre2);
-    } else if (operation === "/") {
+    }  else if (operation === "*") {
+        resultat = multiplication(nombre1, nombre2);
+    }else if (operation === "/") {
         resultat = division(nombre1, nombre2);
     } else if (operation === "**") {
         resultat = puissance(nombre1, nombre2);
@@ -84,7 +85,7 @@ while (true) {
     let historique2 = prompt("Souhaitez-vous afficher l'historique : O/N ?");
 
     if (historique2 === "O") {
-        console.log(historique);
+        console.table(historique);
     }
 }
 
