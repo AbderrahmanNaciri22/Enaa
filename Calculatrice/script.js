@@ -1,8 +1,5 @@
    const prompt = require("prompt-sync")();
    
-   let nombre1 = Number(prompt("Entrez le premier nombre :"));
-    let nombre2 = Number(prompt("Entrez le deuxième nombre :"));
-    let operation = prompt("Entrez l'opération (+, -, *, /, **, ^^, //) :");
     var historique = [];
     let resultat;
     
@@ -49,30 +46,46 @@
 
 
 
+while (true) {
 
-    if (operation === "+"){
-        resultat = addition(nombre1,nombre2);
-    }else if (operation === "-"){
-        resultat = soustraction(nombre1,nombre2);
-    }else if (operation === "/"){
-        resultat = division(nombre1,nombre2);
-    }else if (operation === "**"){
-        resultat = puissance(nombre1,nombre2);
-    }else if(operation === "^^"){
-        resultat = racineCarree(nombre1);
-    }else if(operation === "//"){
-        resultat = Factorielle(nombre1);
+    let operation = prompt("Entrez l'opération (+, -, /, **, ^^, //) ou 0 pour quitter :");
+
+    if (operation === "0") {
+        console.log("Fin du programme");
+        break;
     }
-    console.log(resultat);
+
+    let nombre1 = Number(prompt("Entrez le premier nombre :"));
+    let nombre2 = Number(prompt("Entrez le deuxieme nombre :"));
+
+    let resultat;
+
+    if (operation === "+") {
+        resultat = addition(nombre1, nombre2);
+    } else if (operation === "-") {
+        resultat = soustraction(nombre1, nombre2);
+    } else if (operation === "/") {
+        resultat = division(nombre1, nombre2);
+    } else if (operation === "**") {
+        resultat = puissance(nombre1, nombre2);
+    } else if (operation === "^^") {
+        resultat = racineCarree(nombre1);
+    } else if (operation === "//") {
+        resultat = Factorielle(nombre1);
+    } else {
+        console.log("Opération invalide");
+        continue;
+    }
+
+    console.log("Résultat :", resultat);
 
     ajouterHistorique(historique, nombre1, nombre2, operation, resultat);
 
-     let historique2 = prompt("Souhaitez-vous afficher l'historique : O/N ?");
+    let historique2 = prompt("Souhaitez-vous afficher l'historique : O/N ?");
 
-     if(historique2 === "O"){
+    if (historique2 === "O") {
         console.log(historique);
-     }else{
-        console.log("Fin du programme");
-     }
+    }
+}
 
-  
+    
