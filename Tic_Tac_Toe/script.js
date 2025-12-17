@@ -10,23 +10,35 @@
             let winner = document.getElementById("winner");
             winner.innerHTML = "";
     }
- function FilterWinner(Player){
-    const playerMoves = histo.filter(h => h.player === Player).map(h => h.squareid);
-    for (let j = 0; j < win.length; j++) {
-        if (win[j].every(sq => playerMoves.includes(String(sq)))) {
-            let winner = document.getElementById("winner");
-            winner.innerHTML = `Winner is ${Player}`;
-            const squares = document.querySelectorAll(".square");
-            squares.forEach(square => {
-                square.disabled = true;
-            });
+            function FilterWinner(Player) {
+            const playerMoves = histo.filter(function (h) { return h.player === Player;}).map(function (h) {  return h.squareid; });
+             for (let j = 0; j < win.length; j++) {
+                let isWinner = true;
 
-            return 1;
+                for (let i = 0; i < win[j].length; i++) {
+                    if (!playerMoves.includes(String(win[j][i]))) {
+                        isWinner = false;
+                        break;
+                    }
+                }
+                if (isWinner) {
+                    let winner = document.getElementById("winner");
+                    winner.innerHTML = "Winner is " + Player;
+                    const squares = document.querySelectorAll(".square");
+                    squares.forEach(function (square) {
+                        square.disabled = true;
+                    });
+                    return 1;
+                }
+            }
+            if(histo.length === 9){
+            let winner = document.getElementById("winner");
+            winner.innerHTML = "No winner";
+            }
+
+            return 0;
         }
-    }
-    winner.innerHTML = `No winner`;
-    return 0;
-}
+
   function XODisplay(squareid){
         PlayerX = "X";
         PlayerO = "O";
