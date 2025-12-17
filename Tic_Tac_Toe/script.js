@@ -1,19 +1,32 @@
   let win = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]
-  
  var histo = [];
-
+    function recommancer(){
+            const squares = document.querySelectorAll(".square");
+            squares.forEach(square => {
+                square.innerHTML = "";
+                square.disabled = false;
+            });
+            histo.length = 0;
+            let winner = document.getElementById("winner");
+            winner.innerHTML = "";
+    }
  function FilterWinner(Player){
-       let resultat = histo.filter(histo=>histo.player === Player);
-      console.table(resultat)
-      for(i=0;i<resultat.length;i++){
-           console.log(resultat[i].squareid);
-           for(j=0;j<win.length;j++){
-                  for(g=0;g<win[j].length;g++){
-                        console.log
-                   }
-           }
-      }
- }
+    const playerMoves = histo.filter(h => h.player === Player).map(h => h.squareid);
+    for (let j = 0; j < win.length; j++) {
+        if (win[j].every(sq => playerMoves.includes(String(sq)))) {
+            let winner = document.getElementById("winner");
+            winner.innerHTML = `Winner is ${Player}`;
+            const squares = document.querySelectorAll(".square");
+            squares.forEach(square => {
+                square.disabled = true;
+            });
+
+            return 1;
+        }
+    }
+    winner.innerHTML = `No winner`;
+    return 0;
+}
   function XODisplay(squareid){
         PlayerX = "X";
         PlayerO = "O";
@@ -25,7 +38,6 @@
                 squareid:squareid,
                 player : PlayerX,
              })
-             console.table(histo);
              FilterWinner(PlayerX);
        }else{
             let square = document.getElementById(squareid);
@@ -35,14 +47,6 @@
                 squareid:squareid,
                 player : PlayerO,
              })
-             console.table(histo);
              FilterWinner(PlayerO);
-       }
-       
-      
-      
-
-        // document.getElementById(squareid).innerHTML = PlayerX;
-
-        
+       } 
    }
