@@ -1,7 +1,35 @@
 [
   {
     "id": 1,
+    "nom": "testtt",
+    "present": "none",
+    "competence": [
+      {
+        "competence": "TEST",
+        "niveau": "bon"
+      }
+    ]
+  },
+  {
+    "id": 2,
     "nom": "test",
+    "present": "none",
+    "competence": []
+  },
+  {
+    "id": 3,
+    "nom": "test",
+    "present": "oui",
+    "competence": [
+      {
+        "competence": "eng",
+        "niveau": "bon"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nom": "testttttt",
     "present": "none",
     "competence": []
   }
