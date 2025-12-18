@@ -1,6 +1,19 @@
 const prompt = require("prompt-sync")();
-let classe = [];
 const fs = require("fs");
+
+function ChargerJson() {
+    if (fs.existsSync("classe.json")) {
+        const data = fs.readFileSync("classe.json", "utf-8");
+        classe= JSON.parse(data);
+        console.log("Données chargées depuis classe.json");
+    } else {
+        classe = [];
+        console.log("Aucun fichier trouvé, nouveau fichier sera créé");
+    }
+}
+
+ChargerJson();
+
 
 
 function AjouterDesEleves(){
@@ -48,6 +61,7 @@ function AttribuerDesNiveauxDeCompetence(){
          }
 }
 function ConsulterUneFicheComplete(){
+        console.table(classe);
         let id = prompt("donner id :");
         id = id - 1;
         console.log(JSON.stringify(classe[id], null, 2));
@@ -78,6 +92,7 @@ function LiserLesElevesValidants() {
     console.log("Les données ont été enregistrées dans classe.json !");
 }
 
+
 while(true){
     let choix = prompt("1.Ajouter un eleve \n 2.Marquer une presence \n 3.Ajouter une competence \n 4.Afficher une fiche eleve \n 5.Voir les eleves validants \n 6.Sauvegarder \n 7.Charger \n 8.Quitter :");
     if(choix === "8"){
@@ -96,5 +111,7 @@ while(true){
         LiserLesElevesValidants();
     }else if(choix === "6"){
         EnregistrerJson();
+    }else if(choix === "7"){
+         console.log(JSON.stringify(classe, null, 2));
     }
 }
