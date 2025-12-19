@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+ <style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
+        margin: 0;
+        padding: 30px;
+    }
+
+    .container {
+        width: 420px;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: 600;
+        margin-top: 12px;
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 6px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 18px;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #0d6efd;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    button:hover {
+        background: #084298;
+    }
+
+    /* Operation Guide */
+    .operations-box {
+        background: #f1f5ff;
+        border-left: 5px solid #0d6efd;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+    .operations-box h4 {
+        margin: 0 0 10px 0;
+        color: #0d6efd;
+    }
+
+    .operations-box span {
+        display: inline-block;
+        background: #ffffff;
+        padding: 5px 10px;
+        margin: 4px;
+        border-radius: 6px;
+        font-weight: 600;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .divresultat {
+        position: fixed;
+        right: 30px;
+        top: 30px;
+        width: 460px;
+        height: 480px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        padding: 15px;
+        overflow-y: auto;
+    }
+
+    .divresultat h1 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .resultat div {
+        background: #f8f9fa;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+    }
+
+    h3 {
+        display: inline-block;
+        margin: 0 5px;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <label>Number 1</label>
+    <input type="number" id="number1">
+    <br>
+    <br>
+<div class="operations-box">
+    <h4>Choose an Operation</h4>
+    <span>+</span> Addition
+    <span>-</span> Soustraction
+    <span>*</span> Multiplication
+    <span>/</span> Division
+    <span>**</span> Puissance
+    <span>^^</span> RacineCarree
+    <span>//</span> Factorial
+</div>
+
+    <input type="text" id="oper">
+
+    <label>Number 2</label>
+    <input type="number" id="number2">
+
+    <button onclick="resultat()">Calculate</button>
+
+    <label>Result</label>
+    <input type="text" id="res" readonly>
+</div>
+
+<div class="divresultat">
+    <h1>History</h1>
+    <div class="resultat" id="resultat"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
