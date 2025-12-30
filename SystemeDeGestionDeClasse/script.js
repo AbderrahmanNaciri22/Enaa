@@ -87,7 +87,7 @@ function LiserLesElevesValidants() {
 
 
  function EnregistrerJson() {
-    let save = JSON.stringify(classe, null, 2); // pretty print
+    let save = JSON.stringify(classe, null, 2);
     fs.writeFileSync("classe.json", save, "utf-8");
     console.log("Les données ont été enregistrées dans classe.json !");
 }
